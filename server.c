@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	
 	clientlen = sizeof(client_addr);
 	
-	// Create a new InterNET socket using TCP
+	// Create a new IPv4 socket using TCP
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	
 	if( sockfd < 0 ) 
