@@ -96,7 +96,7 @@ int main(int argc, char **argv)
 		// We got a message from the client
 		printf("Recieved message from client: %s\n", buffer);
 		
-		if( strncmp(buffer, "HELLO", BUF_SIZE) ) 
+		if( strncmp(buffer, "HELLO", sizeof(buffer)) ) 
 		{
 			printf("Recieved HELLO from client, responding SUCCESS\n");
 			bytes_written = write( client_sockfd, "SUCCESS", strlen("SUCCESS") );
