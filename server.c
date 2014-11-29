@@ -12,7 +12,7 @@
 #include <sys/types.h> 					// Types for system calls
 #include <sys/socket.h>                 // Stuff for sockets
 #include <netinet/in.h>					// Stuff for domain addresses
-
+#include <arpa/inet.h>
 
 #define  BUF_SIZE            256        // Our recieve buffer
 #define  MAX_BACKLOG_SIZE	   1		// Have the system queue 1 connection
@@ -79,6 +79,7 @@ int main(int argc, char **argv)
 		syscall_error("ERROR: Failed to accept client connection");
 	}
 	
+	
 	// We now have a client!
 	while( client_sockfd ) 
 	{
@@ -96,7 +97,7 @@ int main(int argc, char **argv)
 		// We got a message from the client
 		printf("Recieved message from client: %s\n", buffer);
 		
-		if( strncmp(buffer, "HELLO", sizeof(buffer)) ) 
+		if( strncmp(buffer, "HELLO", sizeof(buffer)) == 0) 
 		{
 			printf("Recieved HELLO from client, responding SUCCESS\n");
 			bytes_written = write( client_sockfd, "SUCCESS", strlen("SUCCESS") );

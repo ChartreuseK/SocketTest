@@ -13,6 +13,7 @@
 #include <sys/socket.h>                 // Stuff for sockets
 #include <netinet/in.h>					// Stuff for domain addresses
 #include <netdb.h>                      // Used for hostent
+#include <arpa/inet.h>
 
 #define  BUF_SIZE            256        // Our recieve buffer
 
@@ -95,7 +96,7 @@ int main(int argc, char **argv)
 	
 	printf("Recieved message from server: %s\n", buffer);
 	
-	if( strncmp(buffer, "SUCCESS", sizeof(buffer)) )
+	if( strncmp(buffer, "SUCCESS", sizeof(buffer)) == 0)
 	{
 		printf("Message successful!\n");
 	}
